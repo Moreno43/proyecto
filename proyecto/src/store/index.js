@@ -2,7 +2,8 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    productos: []
+    productos: [],
+    carrito: {}
   },
   getters: {
   },
@@ -10,6 +11,9 @@ export default createStore({
     setProducto(state, payload) {
       state.productos = payload
       console.log(state.productos)
+    },
+    setCarrito(state, payload) {
+      state.carrito[payload.id] = payload
     }
   },
   actions: {
@@ -21,6 +25,12 @@ export default createStore({
       } catch (error) {
         console.log(error)
       }
+    },
+    agregarAlCarro({commit,state}, producto) {
+      state.carrito.hasOwnProperty(producto.id)
+      ? producto.cantidad = state.carrito[producto.id].cantidad + 1
+      : producto.cantidad = 1
+      commit('setCarrito', producto)
     }
   },
   modules: {

@@ -5,15 +5,25 @@
         <div class="card-body">
             <h5 class="card-title">{{ producto.title }}</h5>
             <p class="card-text">$ <span>{{ producto.precio }}</span></p>
-            <button class="btn btn-dark">Comprar</button>
+            <button class="btn btn-dark" @click="agregar(producto)">Comprar</button>
         </div>
     </div>
   </div>
 </template>
 
 <script>
+import { useStore } from 'vuex'
+
 export default {
-    props: ['producto']
+    props: ['producto'],
+    setup() {
+      const store =  useStore()
+      const agregar = producto => {
+        store.dispatch('agregarAlCarro', producto)
+      }
+
+      return {agregar}
+    }
 }
 </script>
 

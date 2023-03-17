@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1>Carrito</h1>
-    {{ productos }}
+    <!-- {{ productos }} -->
     <hr>
     <div class="row">
       <Card v-for="producto of productos" :key="producto.id" :producto="producto" />
@@ -26,8 +26,9 @@ export default {
     })
 
     const productos = computed(() => store.state.productos)
+    const carrito = computed(() => store.state.carrito)
 
-    return {productos}
+    return {productos, carrito}
 
   }
 }
