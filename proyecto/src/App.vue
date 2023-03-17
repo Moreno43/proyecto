@@ -3,6 +3,7 @@
     <h1>Carrito</h1>
     <!-- {{ productos }} -->
     <hr>
+    <Carrito />
     <div class="row">
       <Card v-for="producto of productos" :key="producto.id" :producto="producto" />
     </div>
@@ -13,11 +14,12 @@
 import {useStore} from 'vuex'
 import { computed, onMounted } from 'vue'
 import Card from './components/Card.vue'
+import Carrito from './components/Carrito.vue'
 
 export default {
   name: 'App',
   components: {
-    Card
+    Card, Carrito
   },
   setup() {
     const store = useStore()
