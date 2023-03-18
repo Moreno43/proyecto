@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <h1>Carrito</h1>
-    <!-- {{ productos }} -->
     <hr>
     <Carrito />
     <div class="row">
@@ -28,9 +27,9 @@ export default {
     })
 
     const productos = computed(() => store.state.productos)
-    const carrito = computed(() => store.state.carrito)
+    //const carrito = computed(() => store.state.carrito)
 
-    return {productos, carrito}
+    return {productos}
 
   }
 }

@@ -1,3 +1,4 @@
+import { useStore } from 'vuex';
 <template>
   <div class="my-5">
           <h4>Carrito de compras</h4>
@@ -11,7 +12,11 @@
                 <th scope="col">Total</th>
               </tr>
             </thead>
-            <tbody id="items"></tbody>
+            <tbody id="items">
+              {{ item }}
+              <Item v-for="item in items" :key="item.id"
+              :item="item" />
+            </tbody>
             <tfoot>
               <tr id="footer">
                 <th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>
@@ -24,8 +29,19 @@
 </template>
 
 <script>
-export default {
+import { Computed } from 'vuex'
+import {useStore} from 'vuex'
+import Item from './Item.vue'
 
+export default {
+  components: {Item},
+
+  setup() {
+    const store = useStore()
+    const items = computed(() => store.state.carrito)
+
+    return {items}
+  } 
 }
 </script>
 
