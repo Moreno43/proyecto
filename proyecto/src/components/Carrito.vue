@@ -19,7 +19,8 @@ import { useStore } from 'vuex';
             </tbody>
             <tfoot>
               <tr id="footer">
-                <th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>
+                <th scope="row" colspan="5" v-if="Object.keys(items).length === 0">Carrito vacío - comience a comprar!</th>
+                <Footer v-else />
               </tr>
             </tfoot>
           </table>
@@ -32,6 +33,7 @@ import { useStore } from 'vuex';
 import { Computed } from 'vuex'
 import {useStore} from 'vuex'
 import Item from './Item.vue'
+import Footer from './Footer.vue'
 
 export default {
   components: {Item},
